@@ -16,7 +16,7 @@ jobs:
     - name: Configure SSH
       run: |
         mkdir -p ~/.ssh/
-        echo "ssh-rsa 2048 SHA256:gpYbkuf5qf2Zjuu9YPXIoRyFKUcyaGeiFGeK6XwQMv0" > ~/.ssh/id_rsa
+        echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCPOnms164swDWtk6QmaJV+eSLfGTayEyRFDEbb7sQQq4hXVYc0l1eqk/Z0Vud5i6eNMLjG45AgRMjNPtbGgp8NowM4iW1YbXN4SWwmR65lw6WKVGlZdSOhLKeuxYDhmGx43AXM75uy33Lrl2RruX+51WvNwvlzKZJg/fZnr+diVrgaH2SXNYzdUGTffhiGp1ixh4WO12XH8FWMHnK1EQUH3k1fcOjwKyiu9a/HGrxCR8EP80RwbrFr/ZpgFLlxxXtQ1F3RrMaQ2MXms+x+4v2xjb9EI8ehHq4FhLafU50w+Uazf3XU1VPJrmdRlPxpRMb/5oNZPuMAM5ulzqIGIe6h imported-openssh-key" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H ${{ secrets.EC2_PUBLIC_IP }} >> ~/.ssh/known_hosts
 
