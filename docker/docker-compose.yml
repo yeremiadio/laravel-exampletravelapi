@@ -1,0 +1,28 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./public:/var/www/html/public
+    depends_on:
+      - php
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    volumes:
+      - .:/var/www/html
+    environment:
+      - "DB_HOST=localhost"
+      - "DB_PORT=3306"
+      - "DB_DATABASE=example-traveldb"
+      - "DB_USERNAME=root"
+      - "DB_PASSWORD="
+  db:
+    image: mysql:latest
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=laravel"
